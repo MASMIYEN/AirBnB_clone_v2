@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This is the DB storage class for AirBnB"""
+"""This is the DB storage class"""
 
 
 class DBStorage:

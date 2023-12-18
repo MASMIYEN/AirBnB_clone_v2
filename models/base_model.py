@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """This module defines a base class for all models in our hbnb clone"""
-from os import walk
+
 import uuid
 from datetime import datetime
 
