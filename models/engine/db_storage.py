@@ -43,7 +43,7 @@ class DBStorage:
         from sqlalchemy import create_engine
 
         if cls is None:
-            classes = [State, City, Amenity, Place, Review]
+            classes = [State, City]
             objs = []
             for c in classes:
                 objs += self.__session.query(c).all()
@@ -68,6 +68,8 @@ class DBStorage:
         """Create all tables in the database and create the current database
         session"""
         from models.base_model import Base
+        from models.state import State
+        from models.city import City
         from sqlalchemy.orm import sessionmaker
         from sqlalchemy.orm import scoped_session
 
