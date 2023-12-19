@@ -43,7 +43,7 @@ class DBStorage:
         from sqlalchemy import create_engine
 
         if cls is None:
-            classes = [User, State, City, Amenity, Place, Review]
+            classes = [State, City, Amenity, Place, Review]
             objs = []
             for c in classes:
                 objs += self.__session.query(c).all()
