@@ -147,17 +147,24 @@ class HBNBCommand(cmd.Cmd):
                     # not sure about removing quotes here
                     # value = value[1:-1].replace('"', "")
                     value = value[1:-1]
+                    print(f'Value with ": {value}')
                 elif "." in value:
                     value = float(value)
+
+                    print(f"Value with float: {value}")
                 else:
                     try:
                         value = int(value)
+                        print(f"Value with int: {value}")
                     except ValueError:
+                        print("Value must be a string, float, or int")
                         continue
             # setattr(new_instance, key, value)
             new_instance.__dict__.update({key: value})
 
-        # storage.new(new_instance)
+        print("adding new instance to storage")
+        storage.new(new_instance)
+
         storage.save()
         print(new_instance.id)
         # storage.save()

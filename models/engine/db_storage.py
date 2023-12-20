@@ -53,6 +53,7 @@ class DBStorage:
 
     def new(self, obj):
         """Add the object to the current database session"""
+        print(f"new{obj.__class__.__name__}")
         self.__session.add(obj)
 
     def save(self):
@@ -80,6 +81,7 @@ class DBStorage:
 
         print(f"created{self.__class__.__name__}")
         print(f"created{self.__dict__}")
+
         Base.metadata.create_all(self.__engine)
         Session = sessionmaker(bind=self.__engine, expire_on_commit=False)
         self.__session = scoped_session(Session)()
