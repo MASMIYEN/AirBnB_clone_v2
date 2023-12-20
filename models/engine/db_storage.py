@@ -73,11 +73,13 @@ class DBStorage:
         from models.user import User
         from models.place import Place
 
-        # from models.review import Review
-        # from models.amenity import Amenity
+        from models.review import Review
+        from models.amenity import Amenity
         from sqlalchemy.orm import sessionmaker
         from sqlalchemy.orm import scoped_session
 
+        print(f"created{self.__class__.__name__}")
+        print(f"created{self.__dict__}")
         Base.metadata.create_all(self.__engine)
         Session = sessionmaker(bind=self.__engine, expire_on_commit=False)
         self.__session = scoped_session(Session)()

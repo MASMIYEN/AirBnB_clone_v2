@@ -157,7 +157,7 @@ class HBNBCommand(cmd.Cmd):
             # setattr(new_instance, key, value)
             new_instance.__dict__.update({key: value})
 
-        storage.new(new_instance)
+        # storage.new(new_instance)
         storage.save()
         print(new_instance.id)
         # storage.save()
