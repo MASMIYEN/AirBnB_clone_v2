@@ -43,7 +43,7 @@ class DBStorage:
         from sqlalchemy import create_engine
 
         if cls is None:
-            classes = [State, City, User, Place, Review, Amenity]
+            classes = [State, City, User]
             objs = []
             for c in classes:
                 objs += self.__session.query(c).all()
@@ -71,9 +71,10 @@ class DBStorage:
         from models.state import State
         from models.city import City
         from models.user import User
-        from models.place import Place
-        from models.review import Review
-        from models.amenity import Amenity
+
+        # from models.place import Place
+        # from models.review import Review
+        # from models.amenity import Amenity
         from sqlalchemy.orm import sessionmaker
         from sqlalchemy.orm import scoped_session
 

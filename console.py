@@ -21,11 +21,11 @@ class HBNBCommand(cmd.Cmd):
     classes = {
         "BaseModel": BaseModel,
         "User": User,
-        "Place": Place,
         "State": State,
         "City": City,
-        "Amenity": Amenity,
-        "Review": Review,
+        # "Place": Place,
+        # "Amenity": Amenity,
+        # "Review": Review,
     }
     dot_cmds = ["all", "count", "show", "destroy", "update"]
     types = {
@@ -189,9 +189,9 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return
 
-        key = c_name + "." + c_id
+        key = f"{c_name}.{c_id}"
         try:
-            print(storage._FileStorage__objects[key])
+            print(storage.__objects[key])
         except KeyError:
             print("** no instance found **")
 
@@ -220,7 +220,7 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return
 
-        key = c_name + "." + c_id
+        key = f"{c_name}.{c_id}"
 
         try:
             del storage.all()[key]
@@ -259,7 +259,7 @@ class HBNBCommand(cmd.Cmd):
     def do_count(self, args):
         """Count current number of class instances"""
         count = 0
-        for k, v in storage._FileStorage__objects.items():
+        for k, v in storage.__objects.items():
             if args == k.split(".")[0]:
                 count += 1
         print(count)
