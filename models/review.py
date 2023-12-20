@@ -9,8 +9,9 @@ storage_type = getenv("HBNB_TYPE_STORAGE")
 
 
 class Review(BaseModel, Base):
-    """ Review classto store review information """
-    __tablename__ = 'reviews'
+    """Review classto store review information"""
+
+    __tablename__ = "reviews"
 
     if storage_type == "db":
         place_id = Column(String(60), ForeignKey("places.id"), nullable=False)
