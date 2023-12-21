@@ -25,7 +25,7 @@ class HBNBCommand(cmd.Cmd):
         "City": City,
         "Place": Place,
         # "Amenity": Amenity,
-        # "Review": Review,
+        "Review": Review,
     }
     dot_cmds = ["all", "count", "show", "destroy", "update"]
     types = {
