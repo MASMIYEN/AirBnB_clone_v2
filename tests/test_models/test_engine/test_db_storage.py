@@ -11,7 +11,7 @@ from models.state import State
 from models.city import City
 
 
-class TestDBStorage(unittest.TestCase):
+class test_DBStorage(unittest.TestCase):
     """Test for DBStorage class"""
 
     @classmethod
