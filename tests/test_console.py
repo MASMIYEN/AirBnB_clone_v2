@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 import unittest
 from unittest.mock import Mock, patch
 from console import HBNBCommand
@@ -9,9 +8,9 @@ from io import StringIO
 # Mock storage to avoid side effects
 storage = Mock()
 
-
 # Redirect stdout to capture print statements
 class TestConsole(unittest.TestCase):
+
     def setUp(self):
         self.mock_stdout = StringIO()
 
@@ -25,7 +24,7 @@ class TestConsole(unittest.TestCase):
         expected_output = "** class name missing **\n"
 
         # Act
-        with patch("sys.stdout", self.mock_stdout):
+        with patch('sys.stdout', self.mock_stdout):
             cmd.onecmd("create")
 
         # Assert
@@ -38,8 +37,8 @@ class TestConsole(unittest.TestCase):
         expected_output = "User.name: 'John Doe'"
 
         # Act
-        with patch("sys.stdout", self.mock_stdout):
-            cmd.onecmd('create User name="John Doe"')
+        with patch('sys.stdout', self.mock_stdout):
+            cmd.onecmd("create User name=\"John Doe\"")
 
         # Assert
         output = self.mock_stdout.getvalue()
@@ -51,8 +50,8 @@ class TestConsole(unittest.TestCase):
         expected_output = "User.name: 'John Doe'"
 
         # Act
-        with patch("sys.stdout", self.mock_stdout):
-            cmd.onecmd('create User name="John_Doe"')
+        with patch('sys.stdout', self.mock_stdout):
+            cmd.onecmd("create User name=\"John_Doe\"")
 
         # Assert
         output = self.mock_stdout.getvalue()
@@ -64,7 +63,7 @@ class TestConsole(unittest.TestCase):
         expected_output = "** class doesn't exist **\n"
 
         # Act
-        with patch("sys.stdout", self.mock_stdout):
+        with patch('sys.stdout', self.mock_stdout):
             cmd.onecmd("create NonExistentClass")
 
         # Assert
@@ -79,7 +78,7 @@ class TestConsole(unittest.TestCase):
         expected_output = "User object (1234)"
 
         # Act
-        with patch("sys.stdout", self.mock_stdout):
+        with patch('sys.stdout', self.mock_stdout):
             cmd.onecmd("show User 1234")
 
         # Assert
@@ -92,7 +91,7 @@ class TestConsole(unittest.TestCase):
         expected_output = "** instance id missing **\n"
 
         # Act
-        with patch("sys.stdout", self.mock_stdout):
+        with patch('sys.stdout', self.mock_stdout):
             cmd.onecmd("show User")
 
         # Assert
@@ -105,7 +104,7 @@ class TestConsole(unittest.TestCase):
         expected_output = "** class doesn't exist **\n"
 
         # Act
-        with patch("sys.stdout", self.mock_stdout):
+        with patch('sys.stdout', self.mock_stdout):
             cmd.onecmd("show NonExistentClass 1234")
 
         # Assert
@@ -119,7 +118,7 @@ class TestConsole(unittest.TestCase):
         storage.__objects = {"User.1234": "User object (1234)"}
 
         # Act
-        with patch("sys.stdout", self.mock_stdout):
+        with patch('sys.stdout', self.mock_stdout):
             cmd.onecmd("destroy User 1234")
 
         # Assert
@@ -132,7 +131,7 @@ class TestConsole(unittest.TestCase):
         expected_output = "** instance id missing **\n"
 
         # Act
-        with patch("sys.stdout", self.mock_stdout):
+        with patch('sys.stdout', self.mock_stdout):
             cmd.onecmd("destroy User")
 
         # Assert
@@ -145,7 +144,7 @@ class TestConsole(unittest.TestCase):
         expected_output = "** class doesn't exist **\n"
 
         # Act
-        with patch("sys.stdout", self.mock_stdout):
+        with patch('sys.stdout', self.mock_stdout):
             cmd.onecmd("destroy NonExistentClass 1234")
 
         # Assert
@@ -158,12 +157,12 @@ class TestConsole(unittest.TestCase):
         cmd = HBNBCommand()
         storage.all.return_value = {
             "User.1234": "User object (1234)",
-            "Place.5678": "Place object (5678)",
+            "Place.5678": "Place object (5678)"
         }
         expected_output = "['User object (1234)', 'Place object (5678)']"
 
         # Act
-        with patch("sys.stdout", self.mock_stdout):
+        with patch('sys.stdout', self.mock_stdout):
             cmd.onecmd("all")
 
         # Assert
@@ -173,11 +172,13 @@ class TestConsole(unittest.TestCase):
     def test_do_all_specific_class(self):
         # Arrange
         cmd = HBNBCommand()
-        storage.all.return_value = {"User.1234": "User object (1234)"}
+        storage.all.return_value = {
+            "User.1234": "User object (1234)"
+        }
         expected_output = "['User object (1234)']"
 
         # Act
-        with patch("sys.stdout", self.mock_stdout):
+        with patch('sys.stdout', self.mock_stdout):
             cmd.onecmd("all User")
 
         # Assert
@@ -190,7 +191,7 @@ class TestConsole(unittest.TestCase):
         expected_output = "** class doesn't exist **\n"
 
         # Act
-        with patch("sys.stdout", self.mock_stdout):
+        with patch('sys.stdout', self.mock_stdout):
             cmd.onecmd("all NonExistentClass")
 
         # Assert
@@ -204,8 +205,8 @@ class TestConsole(unittest.TestCase):
         storage.all.return_value = {"User.1234": BaseModel()}
 
         # Act
-        with patch("sys.stdout", self.mock_stdout):
-            cmd.onecmd('update User 1234 name "John Doe"')
+        with patch('sys.stdout', self.mock_stdout):
+            cmd.onecmd("update User 1234 name \"John Doe\"")
 
         # Assert
         output = self.mock_stdout.getvalue()
@@ -217,7 +218,7 @@ class TestConsole(unittest.TestCase):
         expected_output = "** attribute name missing **\n"
 
         # Act
-        with patch("sys.stdout", self.mock_stdout):
+        with patch('sys.stdout', self.mock_stdout):
             cmd.onecmd("update User 1234")
 
         # Assert
@@ -230,7 +231,7 @@ class TestConsole(unittest.TestCase):
         expected_output = "** instance id missing **\n"
 
         # Act
-        with patch("sys.stdout", self.mock_stdout):
+        with patch('sys.stdout', self.mock_stdout):
             cmd.onecmd("update User")
 
         # Assert
@@ -243,13 +244,12 @@ class TestConsole(unittest.TestCase):
         expected_output = "** class doesn't exist **\n"
 
         # Act
-        with patch("sys.stdout", self.mock_stdout):
-            cmd.onecmd('update NonExistentClass 1234 name "John Doe"')
+        with patch('sys.stdout', self.mock_stdout):
+            cmd.onecmd("update NonExistentClass 1234 name \"John Doe\"")
 
         # Assert
         output = self.mock_stdout.getvalue()
         self.assertIn(expected_output, output)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()
