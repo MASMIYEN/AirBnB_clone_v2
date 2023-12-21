@@ -9,7 +9,7 @@ storage_type = getenv("HBNB_TYPE_STORAGE")
 
 
 class Review(BaseModel, Base):
-    """Review classto store review information"""
+    """Review class"""
 
     __tablename__ = "reviews"
 
