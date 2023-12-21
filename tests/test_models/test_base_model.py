@@ -7,10 +7,11 @@ from uuid import UUID
 import json
 import os
 
-@unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') != 'db', "not supported")
 
+@unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') != 'db', "not supported")
 class TestBaseModel(unittest.TestCase):
     """Testbase model"""
+
     def test_uuid(self):
         """test uuid"""
         model1 = BaseModel()
@@ -66,8 +67,12 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(type(model1_dict), dict)
         self.assertEqual(model1_dict["id"], model1.id)
         self.assertEqual(model1_dict["__class__"], "BaseModel")
-        self.assertEqual(model1_dict["created_at"], model1.created_at.isoformat())
-        self.assertEqual(model1_dict["updated_at"], model1.updated_at.isoformat())
+        self.assertEqual(
+            model1_dict["created_at"],
+            model1.created_at.isoformat())
+        self.assertEqual(
+            model1_dict["updated_at"],
+            model1.updated_at.isoformat())
 
     def test_to_dict_type(self):
         """test to_dict_type"""

@@ -6,7 +6,9 @@ import os
 import unittest
 from models import storage
 
-@unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') != 'db', "only testing db storage")
+
+@unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') !=
+                 'db', "only testing db storage")
 class test_DBStorage(unittest.TestCase):
     """Class to test the DBStorage method"""
 

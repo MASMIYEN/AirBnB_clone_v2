@@ -9,6 +9,8 @@ from io import StringIO
 storage = Mock()
 
 # Redirect stdout to capture print statements
+
+
 class TestConsole(unittest.TestCase):
 
     def setUp(self):
@@ -250,6 +252,7 @@ class TestConsole(unittest.TestCase):
         # Assert
         output = self.mock_stdout.getvalue()
         self.assertIn(expected_output, output)
+
 
 if __name__ == '__main__':
     unittest.main()
