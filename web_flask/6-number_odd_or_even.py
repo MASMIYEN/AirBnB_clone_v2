@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" module doc """
+""" This module defines a simple Flask web application """
 from flask import Flask
 from flask import render_template
 
